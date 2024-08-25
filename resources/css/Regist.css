@@ -1,0 +1,157 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+span {
+    color: red;
+}
+
+button {
+    cursor: pointer;
+}
+
+.font_size {
+    font-size: 1.3rem;
+    height: 40px;
+}
+
+.container {
+    padding: 0px 20%;
+}
+
+.regist_title {
+    text-align: center;
+}
+
+.regist_title > h1 {
+    margin: 50px 0px;
+}
+
+.regist_title > h2 {
+    margin: 50px 0px;
+}
+
+.regist_form {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    margin: 30px 0px;
+}
+
+.regist_form > div {
+    padding-top: 5px;
+}
+
+.regist_name_form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+}
+
+.regist_name_form > div {
+    padding-top: 5px;
+}
+
+.regist_name_form > button {
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    background-color: #4F9EFF;
+    color: white;
+}
+
+.regist_adress_form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px 0px;
+}
+
+.regist_adress_form > div {
+    padding-top: 5px;
+}
+
+.regist_adress_form > button {
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    background-color: #4F9EFF;
+    color: white;
+}
+
+.adress_title {
+    grid-row: 2/3;
+}
+
+.adress_input1 {
+    grid-column: 2/3;
+}
+
+.adress_input2 {
+    grid-column: 2/4;
+}
+
+.adress_input3 {
+    grid-column: 2/4;
+    grid-row: 3/4;
+}
+
+.regist_phone_form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+    margin: 30px 0px;
+}
+
+.regist_phone_form > button {
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    background-color: #4F9EFF;
+    color: white;
+}
+
+.regist_gender_form {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button:hover {
+    background-color: #3169C4;
+}
+
+.btn_box {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.btn_box > button {
+    padding: 10px 10%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.cancel_btn {
+    background-color: #BFBFBF;
+    color: #616161;
+}
+
+.agree_btn {
+    background-color: #4F9EFF;
+    color: white;
+}
+
+/* 에러 문구 출력 */
+.error-message {
+    color: red;
+    font-size: 12px;
+    grid-column: 2/3;
+  }
+  
+  .pass-message {
+    color: green;
+    font-size: 12px;
+    grid-column: 2/3;
+  }

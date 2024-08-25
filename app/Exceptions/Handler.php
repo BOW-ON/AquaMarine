@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
+use PDOException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -37,5 +39,48 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Exception 핸들링 커스텀
+     */
+
+    // render 이름 고정
+    public function render($request, Throwable $exception) {
+        // 데이터 초기화
+        $errorCode = 'E99';
+        $errorMsgList = $this->context();
+
+        // Exception Instance 체크
+        if($exception instanceof ValidateException) {
+            $errorCode = $exception->getMessage();
+            $errorMsgList = $exception->context();
+        } else if($exception instanceof AuthException) {
+            $errorCode = $exception->getMessage();
+            $errorMsgList = $exception->context();
+        } else if($exception instanceof PDOException) {
+            $errorCode = 'E80';
+        }
+
+        // Response Data 생성
+        $responseData = [
+            'code' => $errorCode
+            ,'msg' => $errorMsgList[$errorCode]['msg']
+        ];
+
+        // 에러 로그
+        // storage->logs폴더에 오늘날짜의 파일에 우리가 만든 에러메세지가 출력 됨
+        Log::error($errorCode, [$exception->getMessage()]);
+
+        return response()->json($responseData, $errorMsgList[$errorCode]['status']);
+    }
+
+    public function context() {
+
+        return [
+            'E80' => ['status' => 500, 'msg' => 'DB에러가 발생했습니다.'],
+            'E90' => ['status' => 500, 'msg' => '요청하신 서비스는 없는 서비스입니다.'],
+            'E99' => ['status' => 500, 'msg' => '시스템 에러가 발생했습니다.'],
+        ];
     }
 }
