@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('business_users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 20);
             $table->date('birth');
@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('detail_address', 50);
             $table->string('tel', 15 );
             $table->char('gender', 1 )->comment('0: 남자, 1: 여자');
+            $table->string('business_code', 20);
+            $table->string('business_img', 255);
+            $table->string('business_name', 50);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('business_users');
     }
 };

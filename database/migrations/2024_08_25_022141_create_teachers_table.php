@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
-            $table->date('birth');
-            $table->string('account', 30);
-            $table->string('password', 512);
-            $table->string('address', 50);
-            $table->string('detail_address', 50);
-            $table->string('tel', 15 );
-            $table->char('gender', 1 )->comment('0: 남자, 1: 여자');
+            $table->bigInteger('pool_id')->unsigned();
+            $table->string('name', 255);
+            $table->string('profile_img', 255);
+            $table->string('resume_img', 255);
+            $table->string('resume_file', 255);
+            $table->char('status', 1)->comment('0: 등록 완료, 1: 수정 신청, 2: 수정 완료, 3: 삭제 신청, 4: 삭제 완료');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('teachers');
     }
 };
