@@ -1,0 +1,36 @@
+/* 공통 css */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+button {
+    cursor: pointer;
+}
+
+/* 유저 마이페이지 공통 */
+.userMypage_grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-items: center;
+}
+.userMypage_title {
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+.userMypage_nav {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.userMypage_nav_grid{
+    display: grid;
+}
+.userMypage_main {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+/* 일반 정보변경 페이지 */
+/* 일반 리뷰 페이지 */
+/* 일반 나의 활동 내역 페이지 */
+/* 일반 관심 수영장 페이지 */
